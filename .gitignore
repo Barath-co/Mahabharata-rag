@@ -1,4 +1,17 @@
+@"
 venv/
 __pycache__/
 *.pyc
-.env
+
+# Local vector database
+data/chroma_db/
+
+# Generated RAG data
+data/processed/chunks.json
+data/processed/embeddings.json
+
+# Local dataset files
+data/raw/
+data/processed/mahabharata.txt
+data/processed/mahabharata_clean.txt
+"@ | Out-File -Encoding utf8 .gitignore
