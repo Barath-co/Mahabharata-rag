@@ -152,6 +152,15 @@ Mahabharata-rag/
 │   ├── vector_store.py
 │   ├── retrieve.py
 │   └── generate.py
+|
+|
+├── frontend/
+│   ├── src/
+│   ├── package.json
+│   ├── vite.config.ts
+│   └── .env.example
+|
+|
 │
 ├── requirements.txt
 ├── .gitignore
@@ -366,15 +375,68 @@ GitHub: Barath-co
 
 
 
-⭐ Project Status
+## Project Status
 
-Backend RAG Pipeline — Completed
+### Backend RAG Pipeline — Completed
 
-The core pipeline from document ingestion to retrieval and local LLM generation has been implemented.
+The core RAG retrieval pipeline has been implemented.
 
-Full-Stack Version — Planned
+It includes:
 
-The next phase will add a FastAPI backend and React frontend to turn the RAG pipeline into a complete AI application.
+- Mahabharata text preprocessing
+- Text cleaning
+- Text chunking
+- 384-dimensional embeddings
+- ChromaDB vector storage
+- Semantic similarity search
+- Top-k relevant passage retrieval
+
+### FastAPI Backend — Completed
+
+A FastAPI backend has been added to expose the retrieval pipeline through REST API endpoints.
+
+The backend currently provides:
+
+- `GET /health` — backend health check
+- `POST /ask` — retrieves relevant Mahabharata passages
+- Swagger API documentation
+- CORS configuration for frontend communication
+
+### React Frontend — Completed
+
+A React + TypeScript frontend built with Vite provides the user interface.
+
+The frontend includes:
+
+- Question input
+- Retrieval results
+- Source passage display
+- Section information
+- Loading states
+- Error handling
+- Backend status monitoring
+- Conversation history
+
+### Frontend ↔ Backend Integration — Completed
+
+The React frontend successfully communicates with the FastAPI backend.
+
+```text
+User Question
+      ↓
+React Frontend
+      ↓
+FastAPI /ask
+      ↓
+Query Embedding
+      ↓
+ChromaDB Search
+      ↓
+Relevant Mahabharata Passages
+      ↓
+FastAPI Response
+      ↓
+React Frontend
 
 
 ### One important thing
