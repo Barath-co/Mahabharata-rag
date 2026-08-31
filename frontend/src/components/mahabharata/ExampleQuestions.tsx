@@ -5,10 +5,10 @@ interface ExampleQuestionsProps {
 
 const EXAMPLES = [
   "Who was Arjuna?",
-  "Why did Draupadi have five husbands?",
-  "What is the significance of the Bhagavad Gita?",
-  "How did the Kurukshetra war begin?",
-  "Who was Karna and why is he a tragic figure?",
+  "Who was Draupadi?",
+  "who is bhima?",
+  "who is nakula?",
+  "Who is duryodana?",
 ];
 
 export default function ExampleQuestions({ onSelect, disabled }: ExampleQuestionsProps) {

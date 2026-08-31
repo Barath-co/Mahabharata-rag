@@ -2,6 +2,8 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from .retrieve import retrieve
+from .generate import generate_answer
+
 
 app = FastAPI(title="Mahabharata RAG API")
 
@@ -48,7 +50,10 @@ def ask(data: dict):
             "sources": []
         }
 
-    # Retrieve relevant Mahabharata passages
+    # --------------------------------------------------------
+    # 1. RETRIEVE
+    # --------------------------------------------------------
+
     results = retrieve(question, top_k=5)
 
     documents = results.get("documents", [[]])[0]
@@ -72,11 +77,20 @@ def ask(data: dict):
             "text": document
         })
 
+    # --------------------------------------------------------
+    # 2. GENERATE
+    # --------------------------------------------------------
+
+    answer = generate_answer(
+        question,
+        sources
+    )
+
+    # --------------------------------------------------------
+    # 3. RETURN
+    # --------------------------------------------------------
+
     return {
-        "answer": (
-            "Retrieval is working successfully. "
-            "The relevant Mahabharata passages "
-            "have been retrieved."
-        ),
+        "answer": answer,
         "sources": sources
     }
